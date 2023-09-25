@@ -66,7 +66,89 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
 }
 
 bool Fixed::operator>(const Fixed& src) {
-	// TODO
-		return false;
-	return true;
+	return this->fixedPointValue > src.fixedPointValue;
+}
+
+bool Fixed::operator<(const Fixed& src) {
+	return this->fixedPointValue < src.fixedPointValue;
+}
+
+bool Fixed::operator>=(const Fixed& src) {
+	return this->fixedPointValue >= src.fixedPointValue;
+}
+
+bool Fixed::operator<=(const Fixed& src) {
+	return this->fixedPointValue <= src.fixedPointValue;
+}
+
+bool Fixed::operator==(const Fixed& src) {
+	return this->fixedPointValue == src.fixedPointValue;
+}
+
+bool Fixed::operator!=(const Fixed& src) {
+	return this->fixedPointValue != src.fixedPointValue;
+}
+
+
+// return Fixed ?
+float Fixed::operator+(const Fixed src) {
+	return (this->toFloat() + src.toFloat());
+}
+
+float Fixed::operator-(const Fixed src) {
+	return (this->toFloat() - src.toFloat());
+}
+
+float Fixed::operator*(const Fixed src) {
+	return (this->toFloat() * src.toFloat());
+}
+
+float Fixed::operator/(const Fixed src) {
+	return (this->toFloat() / src.toFloat());
+}
+
+Fixed Fixed::operator++(void) {
+	this->fixedPointValue++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed tmp = *this;
+	this->fixedPointValue++;
+	return tmp;
+}
+
+Fixed Fixed::operator--(void) {
+	this->fixedPointValue--;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed tmp = *this;
+	this->fixedPointValue--;
+	return tmp;
+}
+
+Fixed& Fixed::min(Fixed& src, Fixed& src2) {
+	if (src > src2)
+		return src2;
+	return src;
+}
+
+const Fixed& Fixed::min(const Fixed& src, const Fixed& src2) {
+	if (src.fixedPointValue > src2.fixedPointValue)
+		return src2;
+	return src;
+}
+
+Fixed& Fixed::max(Fixed& src, Fixed& src2) {
+	if (src < src2)
+		return src2;
+	return src;
+}
+
+const Fixed& Fixed::max(const Fixed& src, const Fixed& src2) {
+	if (src.fixedPointValue < src2.fixedPointValue)
+		return src2;
+	return src;
 }

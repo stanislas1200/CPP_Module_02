@@ -43,19 +43,26 @@ class Fixed
 
 
 		bool operator>(const Fixed &src);
-		// Fixed& operator<(const Fixed &src);
-		// Fixed& operator>=(const Fixed &src);
-		// Fixed& operator<=(const Fixed &src);
-		// Fixed& operator==(const Fixed &src);
-		// Fixed& operator!=(const Fixed &src);
+		bool operator<(const Fixed &src);
+		bool operator>=(const Fixed &src);
+		bool operator<=(const Fixed &src);
+		bool operator==(const Fixed &src);
+		bool operator!=(const Fixed &src);
 
-		// Fixed& operator+(const Fixed &src);
-		// Fixed& operator-(const Fixed &src);
-		// Fixed& operator*(const Fixed &src);
-		// Fixed& operator/(const Fixed &src);
+		float operator+(const Fixed src);
+		float operator-(const Fixed src);
+		float operator*(const Fixed src);
+		float operator/(const Fixed src);
 
-		// Fixed& operator++(const Fixed &src);
-		// Fixed& operator--(const Fixed &src);
+		Fixed operator++(void);
+		Fixed operator++(int);
+		Fixed operator--(void);
+		Fixed operator--(int);
+
+		static Fixed& min(Fixed& src, Fixed& src2);
+		static const Fixed& min(const Fixed& src, const Fixed& src2);
+		static Fixed& max(Fixed& src, Fixed& src2);
+		static const Fixed&  max(const Fixed& src, const Fixed& src2);		
 
 	private:
 		int					fixedPointValue;
