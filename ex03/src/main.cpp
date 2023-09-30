@@ -11,12 +11,20 @@
 /* ************************************************************************** */
 
 #include "../include/Point.hpp"
+
 bool bsp(Point const a, Point const b, Point const c, Point const point);
 
+void print_pos(bool inside) {
+	inside ? std::cout << CYAN "Inside" R << std::endl : std::cout << RED "Outside" R << std::endl;
+}
+
 int main( void ) {
-	Point p(0, 0);
-	if (bsp(Point(-1, -1), Point(0.5, 1), Point(1,-1), p))
-		std::cout << CYAN "Inside" R << std::endl;
-	else
-		std::cout << RED "Outside" R << std::endl;
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(50, 50)));	// far
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(0, 0)));		// middle
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(1, -1)));		// corner
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(1, -1.1)));	// outside corner
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(1, -0.9)));	// outside corner
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(0.9, -1)));	// inside corner
+	print_pos(bsp(Point(1, 0), Point(0, 0), Point(0, 1), Point(0.5, 0.5)));		// middle
+	print_pos(bsp(Point(0, 0), Point(0, 0), Point(0, 0), Point(0, 0)));			// no area
 }

@@ -12,16 +12,20 @@
 
 #include "../include/Point.hpp"
 
-Fixed get_area(Point a, Point b, Point c) {
-    return Fixed((a.getX() * (b.getY() - c.getY()) + b.getX()*(c.getY()-a.getX())+ c.getX()*(a.getY()-b.getY()))/2.0);
+float get_area(Point a, Point b, Point c) {
+    float area = (a.getX().toFloat() * (b.getY().toFloat() - c.getY().toFloat()) + b.getX().toFloat() * (c.getY().toFloat() - a.getY().toFloat()) + c.getX().toFloat() * (a.getY().toFloat() - b.getY().toFloat())) /2;
+    return area >= 0 ? area : area *-1;
 }
 
 bool bsp(Point const a, Point const b, Point const c, Point const point){
     
-    Fixed A = get_area(a, b, c);
-    Fixed A1 = get_area(point, b, c);
-    Fixed A2 = get_area(a, point, c);
-    Fixed A3 = get_area(a, b, point);
-    
-    return A == A1 + A2 + A3;
+    float A = get_area(a, b, c);
+    float A1 = get_area(point, b, c);
+    float A2 = get_area(a, point, c);
+    float A3 = get_area(a, b, point);
+    // std::cout << A1 << std::endl;
+    // std::cout << A2 << std::endl;
+    // std::cout << A3 << std::endl;
+    return (A1== 0 && A2 == 0 && A3 == 0) ? false : A == A1 + A2 + A3;
+    // return A == A1 + A2 + A3;
 }
