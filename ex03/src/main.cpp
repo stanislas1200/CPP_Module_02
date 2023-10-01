@@ -24,7 +24,9 @@ int main( void ) {
 	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(1, -1)));		// corner
 	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(1, -1.1)));	// outside corner
 	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(1, -0.9)));	// outside corner
-	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(0.9, -1)));	// inside corner
-	print_pos(bsp(Point(1, 0), Point(0, 0), Point(0, 1), Point(0.5, 0.5)));		// middle
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(0.9, -0.9)));	// inside corner
+	print_pos(bsp(Point(-1, -1), Point(0, 1), Point(1, -1), Point(0.9, -1)));	// on edge
+	print_pos(bsp(Point(1, 0), Point(0, 0), Point(0, 1), Point(0.25, 0.25)));	// middle
 	print_pos(bsp(Point(0, 0), Point(0, 0), Point(0, 0), Point(0, 0)));			// no area
+	print_pos(bsp(Point(0, 0), Point(1, 0), Point(0, 1), Point(0.5, 0)));		// middle edge
 }

@@ -6,7 +6,7 @@
 /*   By: sgodin <sgodin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:53:13 by sgodin            #+#    #+#             */
-/*   Updated: 2023/09/30 15:38:31 by sgodin           ###   ########.fr       */
+/*   Updated: 2023/10/01 13:21:41 by sgodin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ bool bsp(Point const a, Point const b, Point const c, Point const point){
     float A1 = get_area(point, b, c);
     float A2 = get_area(a, point, c);
     float A3 = get_area(a, b, point);
-    return (A1== 0 && A2 == 0 && A3 == 0) ? false : A == A1 + A2 + A3;
+    return (A1 == 0 || A2 == 0 || A3 == 0) ? false : A == A1 + A2 + A3;
 }
